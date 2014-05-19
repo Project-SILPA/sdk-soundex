@@ -124,4 +124,8 @@ public class Soundex {
         }
         return -1;
     }
+
+    public String getModuleName() {
+        return "Soundex";
+    }
 }

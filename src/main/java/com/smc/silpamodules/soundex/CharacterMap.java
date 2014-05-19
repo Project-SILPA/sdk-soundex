@@ -103,4 +103,8 @@ public class CharacterMap {
         Log.e(LOG_TAG, "Language of given argument could not be determined. returned -1");
         return LanguageConstants.NULL;
     }
+
+    public String getModuleName() {
+        return "Soundex";
+    }
 }
