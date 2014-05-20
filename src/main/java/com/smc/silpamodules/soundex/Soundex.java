@@ -56,7 +56,7 @@ public class Soundex {
             }
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error : " + e.getMessage());
-            return "0";
+            return null;
         }
     }
 
