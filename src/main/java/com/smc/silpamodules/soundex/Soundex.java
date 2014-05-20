@@ -55,8 +55,7 @@ public class Soundex {
                         charmap.get(lang).indexOf(character));
             }
         } catch (Exception e) {
-            Log.e(LOG_TAG, "Error : " + e.getMessage());
-            return null;
+            return "0";
         }
     }
 
@@ -67,16 +66,11 @@ public class Soundex {
      * @return soundex code of input in string format
      */
     public String soundex(String name) {
-
-        if (name == null) throw new NullPointerException();
-
         try {
             name = new String((name.getBytes("UTF-8")), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            Log.e(LOG_TAG, "Encoding of given argument not supported. returned -1");
+        } catch (Exception e) {
             return null;
         }
-
         int len = 8;
         String sndx = "";
         String fc = "";
@@ -87,8 +81,7 @@ public class Soundex {
             String c = name.substring(i, i + 1);
             try {
                 c = new String((c.getBytes("UTF-8")), "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                Log.e(LOG_TAG, "Encoding of given argument not supported. returned -1");
+            } catch (Exception e) {
                 return null;
             }
 

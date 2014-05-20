@@ -41,6 +41,9 @@ public class TestSoundex extends AndroidTestCase {
         assertNotNull(obj);
 
         assertEquals("കAPKBF00", obj.soundex("കാര്‍ത്തിക്"));
+        assertEquals("r1630000", obj.soundex("rupert"));
+        assertEquals("ಬDNFQCPC", obj.soundex("ಬೆಂಗಳೂರು"));
+        assertEquals("आNPMQ000", obj.soundex("आम्र् फल्"));
     }
 
     @SmallTest
@@ -50,16 +53,21 @@ public class TestSoundex extends AndroidTestCase {
         Soundex obj = new Soundex();
         assertNotNull(obj);
 
+        assertEquals(0, obj.compare("बॆंगळूरु", "बॆंगळूरु"));
+
         assertEquals(-1, obj.compare("സന്തോഷ്", "സന്തോഷിന്റെ"));
         assertEquals(-1, obj.compare("സന്തോഷ്", "സന്തോഷില്ലേ"));
         assertEquals(-1, obj.compare("പാലക്കാട്", "പാലക്കാടിന്റെ"));
         assertEquals(-1, obj.compare("അടി", "ഇടി"));
+        assertEquals(-1, obj.compare("Bangalore", "ಬೆಂಗಳೂರು"));
+        assertEquals(-1, obj.compare("बॆंगळूरु", "आम्र् फल्"));
 
         assertEquals(1, obj.compare("streng", "string"));
         assertEquals(1, obj.compare("അധി", "അതി"));
         assertEquals(1, obj.compare("ചക്ക", "ചഗ"));
         assertEquals(1, obj.compare("പ്രതീഷ്", "പ്രദീഷ്"));
 
+        assertEquals(2, obj.compare("ಬೆಂಗಳೂರು", "बॆंगळूरु"));
         assertEquals(2, obj.compare("പ്രതീഷ്", "ப்ரதீஷ்"));
         assertEquals(2, obj.compare("സന്തോഷ്", "सन्तौष"));
 
