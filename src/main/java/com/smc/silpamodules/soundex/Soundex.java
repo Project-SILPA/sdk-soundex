@@ -29,8 +29,8 @@ public class Soundex {
     /**
      * Helper to get Soundex code of the argument passed.
      *
-     * @param character
-     * @return
+     * @param character single character unicode string
+     * @return soundex code of character
      */
     public String soundexCode(String character) {
 
@@ -63,8 +63,8 @@ public class Soundex {
     /**
      * This function returns Soundex Code of argument passed.
      *
-     * @param name
-     * @return
+     * @param name unicode string
+     * @return soundex code of input in string format
      */
     public String soundex(String name) {
 
@@ -113,15 +113,14 @@ public class Soundex {
 
     /**
      * This functions compares two arguments passed.
-     * Returns :
+     *
+     * @param string1 argument1
+     * @param string2 argument2
+     * @return int
      * 0 - if both arguments are same
      * 1 - if both arguments sound similar and belong to same language
      * 2 - if both arguments sound similar but belong to different language
      * -1 - if arguments dont sound alike or on error
-     *
-     * @param string1
-     * @param string2
-     * @return
      */
     public int compare(String string1, String string2) {
 
@@ -159,10 +158,20 @@ public class Soundex {
     /**
      * This function returns module name
      *
-     * @return
+     * @return module name
      */
     public String getModuleName() {
-        return "Soundex";
+        return LanguageConstants.soundexModuleName;
     }
+
+    /**
+     * This function returns module information
+     *
+     * @return information regarding this module
+     */
+    public String getModuleInformation() {
+        return LanguageConstants.soundexModuleInformation;
+    }
+
 
 }

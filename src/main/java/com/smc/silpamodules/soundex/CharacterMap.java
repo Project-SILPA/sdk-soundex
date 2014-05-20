@@ -13,13 +13,22 @@ public class CharacterMap {
 
     private static final String LOG_TAG = "Soundex Module - CharacterMap";
 
+    /**
+     * Character Mapping based on phonetic codes
+     */
     private HashMap<Integer, List<String>> characterMap;
 
+    /**
+     * Constructor
+     */
     public CharacterMap() {
         characterMap = new HashMap<Integer, List<String>>();
         init();
     }
 
+    /**
+     * Initialize characterMap
+     */
     private void init() {
         this.characterMap.put(LanguageConstants.HINDI, Arrays.asList("ँ", "ं", "ः", "ऄ", "अ", "आ", "इ", "ई", "उ", "ऊ", "ऋ", "ऌ", "ऍ", "ऎ", "ए", "ऐ", "ऑ", "ऒ", "ओ", "औ", "क", "ख", "ग", "घ", "ङ", "च", "छ", "ज", "झ", "ञ", "ट", "ठ", "ड", "ढ", "ण", "त", "थ", "द", "ध", "न", "ऩ", "प", "फ", "ब", "भ", "म", "य", "र", "ऱ", "ल", "ळ", "ऴ", "व", "श", "ष", "स", "ह", "ऺ", "ऻ", "़", "ऽ", "ा", "ि", "ी", "ु", "ू", "ृ", "ॄ", "ॅ", "ॆ", "े", "ै", "ॉ", "ॊ", "ो", "ौ", "्", "ॎ", "ॏ", "ॐ", "॑", "॒", "॓", "॔", "ॕ", "ॖ", "ॗ", "क़", "ख़", "ग़", "ज़", "ड़", "ढ़", "फ़", "य़", "ॠ", "ॡ", "ॢ", "ॣ", "।", "॥", "०", "१", "२", "३", "४", "५", "६", "७", "८", "९", "॰", "ॱ", "ॲ", "ॳ", "ॴ", "ॵ", "ॶ", "ॷ", "ॸ", "ॹ", "ॺ", "ॻ", "ॼ", "ॽ", "ॾ", "ॿ"));
         this.characterMap.put(LanguageConstants.BENGALI, Arrays.asList("ঁ", "ং", "ঃ", "঄", "অ", "আ", "ই", "ঈ", "উ", "ঊ", "ঋ", "ঌ", "঍", "঎", "এ", "ঐ", "঑", "঒", "ও", "ঔ", "ক", "খ", "গ", "ঘ", "ঙ", "চ", "ছ", "জ", "ঝ", "ঞ", "ট", "ঠ", "ড", "ঢ", "ণ", "ত", "থ", "দ", "ধ", "ন", "঩", "প", "ফ", "ব", "ভ", "ম", "য", "র", "঱", "ল", "঳", "঴", "঵", "শ", "ষ", "স", "হ", "঺", "঻", "়", "ঽ", "া", "ি", "ী", "ু", "ূ", "ৃ", "ৄ", "৅", "৆", "ে", "ৈ", "৉", "৊", "ো", "ৌ", "্", "ৎ", "৏", "৐", "৑", "৒", "৓", "৔", "৕", "৖", "ৗ", "৘", "৙", "৚", "৛", "ড়", "ঢ়", "৞", "য়", "ৠ", "ৡ", "ৢ", "ৣ", "৤", "৥", "০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "ৰ", "ৱ", "৲", "৳", "৴", "৵", "৶", "৷", "৸", "৹", "৺", "৻", "ৼ", "৽", "৾", "৿"));
@@ -36,10 +45,27 @@ public class CharacterMap {
         this.characterMap.put(LanguageConstants.SOUNDEX_OLD, Arrays.asList("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", "1", "1", "5", "2", "2", "2", "2", "5", "3", "3", "3", "3", "5", "4", "4", "4", "4", "5", "5", "4", "4", "4", "4", "5", "6", "7", "7", "8", "8", "8", "6", "9", "9", "9", "6", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
     }
 
+    /**
+     * This getter function returns character map based on phonetic codes
+     *
+     * @return HashMap<Integer, List<String>>
+     * Integer - Language from LanguageConstants
+     * List<String> - List of character mapping of given language
+     */
     public HashMap<Integer, List<String>> getCharacterMap() {
         return this.characterMap;
     }
 
+    /**
+     * This function compares two characters based on phonetic codes
+     *
+     * @param char1 single character unicode string
+     * @param char2 single character unicode string
+     * @return int
+     * 0 - if characters are same
+     * 1 - same soundex group index
+     * 2 - different soundex group index
+     */
     public int charCompare(String char1, String char2) {
 
         if (char1 == null || char2 == null) throw new NullPointerException();
@@ -80,6 +106,12 @@ public class CharacterMap {
         return -1;
     }
 
+    /**
+     * This function determines language of given character input
+     *
+     * @param character single character unicode string
+     * @return int - check LanguageConstants
+     */
     public int language(String character) {
 
         if (character == null) throw new NullPointerException();
@@ -104,7 +136,12 @@ public class CharacterMap {
         return LanguageConstants.NULL;
     }
 
+    /**
+     * This function returns module name
+     *
+     * @return module name
+     */
     public String getModuleName() {
-        return "Soundex";
+        return LanguageConstants.soundexModuleName;
     }
 }
