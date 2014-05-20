@@ -11,14 +11,27 @@ import java.util.List;
  */
 public class Soundex {
 
+    // Android Log tag
     private static final String LOG_TAG = "Soundex Module - Soundex";
 
+    /**
+     * CharacterMap object
+     */
     private CharacterMap characterMap;
 
+    /**
+     * Constructor
+     */
     public Soundex() {
         this.characterMap = new CharacterMap();
     }
 
+    /**
+     * Helper to get Soundex code of the argument passed.
+     *
+     * @param character
+     * @return
+     */
     public String soundexCode(String character) {
 
         if (character == null) throw new NullPointerException();
@@ -47,6 +60,12 @@ public class Soundex {
         }
     }
 
+    /**
+     * This function returns Soundex Code of argument passed.
+     *
+     * @param name
+     * @return
+     */
     public String soundex(String name) {
 
         if (name == null) throw new NullPointerException();
@@ -92,6 +111,18 @@ public class Soundex {
         return (sndx + "00000000").substring(0, len);
     }
 
+    /**
+     * This functions compares two arguments passed.
+     * Returns :
+     * 0 - if both arguments are same
+     * 1 - if both arguments sound similar and belong to same language
+     * 2 - if both arguments sound similar but belong to different language
+     * -1 - if arguments dont sound alike or on error
+     *
+     * @param string1
+     * @param string2
+     * @return
+     */
     public int compare(String string1, String string2) {
 
         if (string1 == null || string2 == null) throw new NullPointerException();
@@ -125,7 +156,13 @@ public class Soundex {
         return -1;
     }
 
+    /**
+     * This function returns module name
+     *
+     * @return
+     */
     public String getModuleName() {
         return "Soundex";
     }
+
 }
