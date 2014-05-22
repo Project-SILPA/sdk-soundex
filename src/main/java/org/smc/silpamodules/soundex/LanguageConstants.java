@@ -1,4 +1,4 @@
-package com.smc.silpamodules.soundex;
+package org.smc.silpamodules.soundex;
 
 public class LanguageConstants {
 

@@ -3,7 +3,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.smc.silpamodules.soundex.LanguageConstants;
+import org.smc.silpamodules.soundex.LanguageConstants;
 
 /**
  * Created by sujith on 19/5/14.
