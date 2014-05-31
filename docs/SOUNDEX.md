@@ -64,6 +64,7 @@ String moduleInforamtion =  obj.getModuleInformation();
 ```
 
 #### To run tests
+Tests present at `/src/test/java/`
 
   - Select test to run
   - Right Click -> Run Test -> Run as Android Test
