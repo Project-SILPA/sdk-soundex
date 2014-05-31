@@ -1,7 +1,7 @@
 Soundex
 =======
 
-Travis master: [![Build Status](https://travis-ci.org/SujithVadakkepat/Soundex.svg?branch=master)](https://travis-ci.org/SujithVadakkepat/Soundex)
+Travis master: [![Build Status](https://travis-ci.org/SujithVadakkepat/sdk-soundex.svg?branch=master)](https://travis-ci.org/SujithVadakkepat/sdk-soundex)
 
 Soundex Phonetic Code Algorithm Demo for Indian Languages. Supports all indian languages and English. Provides intra-indic string comparison
 
