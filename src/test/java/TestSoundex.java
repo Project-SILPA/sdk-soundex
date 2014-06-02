@@ -3,7 +3,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import org.smc.silpamodules.soundex.Soundex;
+import org.silpa.soundex.Soundex;
 
 /**
  * Created by sujith on 20/5/14.
@@ -30,7 +30,16 @@ public class TestSoundex extends AndroidTestCase {
         Soundex obj = new Soundex();
         assertNotNull(obj);
 
-        assertEquals("Soundex", obj.getModuleName());
+        assertEquals(Soundex.MODULE_NAME, obj.getModuleName());
+    }
+
+    @SmallTest
+    @MediumTest
+    @LargeTest
+    public void testGetModuleInformation() {
+        Soundex obj = new Soundex();
+        assertNotNull(obj);
+        assertEquals(Soundex.MODULE_INFORMATION, obj.getModuleInformation());
     }
 
     @SmallTest

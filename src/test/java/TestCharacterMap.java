@@ -3,8 +3,8 @@ import android.test.suitebuilder.annotation.LargeTest;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import org.smc.silpamodules.soundex.CharacterMap;
-import org.smc.silpamodules.soundex.LanguageConstants;
+import org.silpa.soundex.CharacterMap;
+import org.silpa.soundex.LanguageConstants;
 
 import java.util.HashMap;
 import java.util.List;

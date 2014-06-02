@@ -1,4 +1,4 @@
-package org.smc.silpamodules.soundex;
+package org.silpa.soundex;
 
 public class LanguageConstants {
 
@@ -19,6 +19,4 @@ public class LanguageConstants {
     public static final int SOUNDEX = 12;
     public static final int SOUNDEX_OLD = 13;
 
-    public static final String soundexModuleName = "Soundex";
-    public static final String soundexModuleInformation = "Soundex Algorithm for Indian Languages and 'sounds like' search across Indian Languages";
 }

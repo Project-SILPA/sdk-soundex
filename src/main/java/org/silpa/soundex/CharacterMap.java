@@ -1,4 +1,4 @@
-package org.smc.silpamodules.soundex;
+package org.silpa.soundex;
 
 import android.util.Log;
 
@@ -142,6 +142,15 @@ public class CharacterMap {
      * @return module name
      */
     public String getModuleName() {
-        return LanguageConstants.soundexModuleName;
+        return Soundex.MODULE_NAME;
+    }
+
+    /**
+     * This function returns module information
+     *
+     * @return information regarding this module
+     */
+    public String getModuleInformation() {
+        return Soundex.MODULE_INFORMATION;
     }
 }

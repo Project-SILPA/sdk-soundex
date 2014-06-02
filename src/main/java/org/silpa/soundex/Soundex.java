@@ -1,4 +1,4 @@
-package org.smc.silpamodules.soundex;
+package org.silpa.soundex;
 
 import android.util.Log;
 
@@ -10,6 +10,17 @@ import java.util.List;
  * Created by sujith on 19/5/14.
  */
 public class Soundex {
+
+    /**
+     * Module name
+     */
+    public static final String MODULE_NAME = "Soundex";
+
+    /**
+     * Brief information regarding module
+     */
+    public static final String MODULE_INFORMATION = "Soundex Algorithm for Indian Languages and " +
+            "'sounds like' search across Indian Languages";
 
     // Android Log tag
     private static final String LOG_TAG = "Soundex Module - Soundex";
@@ -154,7 +165,7 @@ public class Soundex {
      * @return module name
      */
     public String getModuleName() {
-        return LanguageConstants.soundexModuleName;
+        return Soundex.MODULE_NAME;
     }
 
     /**
@@ -163,7 +174,7 @@ public class Soundex {
      * @return information regarding this module
      */
     public String getModuleInformation() {
-        return LanguageConstants.soundexModuleInformation;
+        return Soundex.MODULE_INFORMATION;
     }
 
 
