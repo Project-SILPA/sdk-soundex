@@ -20,9 +20,8 @@ android {
         versionName "1.0"
     }
 
-    // This is important, it will run lint checks but won't abort build
     lintOptions {
-        abortOnError false
+        abortOnError true
     }
 
     sourceSets {
