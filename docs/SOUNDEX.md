@@ -12,10 +12,10 @@ int result = obj.compare("ಬೆಂಗಳೂರು", "बॆंगळूरु")
 The above function `obj.compare(String, String);` accepts two unicode strings to be compared and returns : 
 
 ```
-0 - if both arguments are same
-1 - if both arguments sound similar and belong to same language
-2 - if both arguments sound similar but belong to different language
--1 - if arguments dont sound alike or on error
+0 - if both strings are same
+1 - if strings sound phonetically same
+2 - if strings are phonetically not same
+-1 - if on English cross language comparison or on error
 ```
 
 #### Get Soundex Code of given text 
@@ -28,39 +28,20 @@ The above function `obj.soundex(String);` accepts a unicode string and returns s
 #### Get Language of string
 ```
 CharacterMap obj = new CharacterMap();
-int language = obj.language("अ"); 
+String language = CharacterMap.getLanguage('अ'); 
 ```
-The above function `obj.language("अ");` accepts a unicode string and returns :
+The above function `obj.language(char);` accepts a character and returns :
 ```
-1 -  HINDI 
-2 -  BENGALI 
-3 -  PUNJABI 
-4 -  GUJARATI 
-5 -  ORIYA 
-6 -  TAMIL 
-7 -  TELUGU
-8 -  KANNADA 
-9 -  MALAYALAM 
-10 - ENGLISH_US 
-
-// access these via
-
-LanguageConstants.HINDI
-LanguageConstants.BENGALI
-LanguageConstants.PUNJABI
-LanguageConstants.GUJARATI
-LanguageConstants.ORIYA
-LanguageConstants.TAMIL
-LanguageConstants.TELUGU
-LanguageConstants.KANNADA
-LanguageConstants.MALAYALAM
-LanguageConstants.ENGLISH_US
-```
-
-#### Get module name and information
-```
-String moduleName = obj.getModuleName();
-String moduleInforamtion =  obj.getModuleInformation();
+"hi_IN" -  HINDI 
+"bn_IN" -  BENGALI 
+"pa_IN" -  PUNJABI 
+"gu_IN" -  GUJARATI 
+"or_IN" -  ORIYA 
+"ta_IN" -  TAMIL 
+"te_IN" -  TELUGU
+"kn_IN" -  KANNADA 
+"ml_IN" -  MALAYALAM 
+"en_US" -  ENGLISH_US 
 ```
 
 #### To run tests

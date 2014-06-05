@@ -30,6 +30,14 @@ public class CharacterMap {
         charmapTransphon.put("IPA", Arrays.asList("m", "m", "", "", "ə", "aː", "i", "iː", "u", "uː", "r̩", "l̩", "æ", "e", "eː", "ɛː", "ɔ", "o", "oː", "ow", "kə", "kʰə", "gə", "gʱə", "ŋə", "ʧə", "ʧʰə", "ʤə", "ʤʱə", "ɲə", "ʈə", "ʈʰə", "ɖə", "ɖʱə", "ɳə", "t̪ə", "t̪ʰə", "d̪ə", "d̪ʱə", "n̪ə", "nə", "pə", "pʰə", "bə", "bʱə", "mə", "jə", "ɾə", "rə", "lə", "ɭə", "ɻə", "ʋə", "ɕə", "ʂə", "sə", "ɦə", "", "", "", "ഽ", "aː", "i", "iː", "u", "uː", "r̩", "l̩", "e", "eː", "ɛː", "ɔ", "o", "oː", "ow", "", "", "", "", "", "", "", "", "", "", "ow", "", "", "", "", "", "", "", "", "r̩ː", "l̩ː", "", "", "", "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "൰", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
     }
 
+
+    /**
+     * @param char1 First character for comparison
+     * @param char2 Second character for comparison
+     * @return 0 if both characters are same, 1 if both characters
+     * are similar but from different language and -1 if any
+     * one or both characters are not found
+     */
     public static int charCompare(char char1, char char2) {
         if (char1 == char2) {
             return 0;
@@ -63,6 +71,15 @@ public class CharacterMap {
         return -1;
     }
 
+    /**
+     * Get the language of given `char'
+     * Return the language of given character, if character language
+     * is not found `None' is returned.
+     *
+     * @param ch The char whose language is to be detected
+     * @return string representing language or None if char not found
+     * in our mapping.
+     */
     public static String getLanguage(char ch) {
         for (Map.Entry<String, List<Character>> entry : CharacterMap.charmap.entrySet()) {
             String lang = entry.getKey();
