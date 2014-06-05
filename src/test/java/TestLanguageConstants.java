@@ -3,7 +3,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import org.silpa.soundex.LanguageConstants;
+import org.silpa.soundex.CharacterMap;
 
 /**
  * Created by sujith on 19/5/14.
@@ -19,22 +19,22 @@ public class TestLanguageConstants extends AndroidTestCase {
     @MediumTest
     @LargeTest
     public void testLanguageConstants() {
-        assertEquals(-1, LanguageConstants.NULL);
+        assertEquals(-1, CharacterMap.NULL);
 
-        assertEquals(1, LanguageConstants.HINDI);
-        assertEquals(2, LanguageConstants.BENGALI);
-        assertEquals(3, LanguageConstants.PUNJABI);
-        assertEquals(4, LanguageConstants.GUJARATI);
-        assertEquals(5, LanguageConstants.ORIYA);
-        assertEquals(6, LanguageConstants.TAMIL);
-        assertEquals(7, LanguageConstants.TELUGU);
-        assertEquals(8, LanguageConstants.KANNADA);
-        assertEquals(9, LanguageConstants.MALAYALAM);
-        assertEquals(10, LanguageConstants.ENGLISH_US);
+        assertEquals(1, CharacterMap.HINDI);
+        assertEquals(2, CharacterMap.BENGALI);
+        assertEquals(3, CharacterMap.PUNJABI);
+        assertEquals(4, CharacterMap.GUJARATI);
+        assertEquals(5, CharacterMap.ORIYA);
+        assertEquals(6, CharacterMap.TAMIL);
+        assertEquals(7, CharacterMap.TELUGU);
+        assertEquals(8, CharacterMap.KANNADA);
+        assertEquals(9, CharacterMap.MALAYALAM);
+        assertEquals(10, CharacterMap.ENGLISH_US);
 
-        assertEquals(11, LanguageConstants.SOUNDEX_EN);
-        assertEquals(12, LanguageConstants.SOUNDEX);
-        assertEquals(13, LanguageConstants.SOUNDEX_OLD);
+        assertEquals(11, CharacterMap.SOUNDEX_EN);
+        assertEquals(12, CharacterMap.SOUNDEX);
+        assertEquals(13, CharacterMap.SOUNDEX_OLD);
     }
 
     @Override

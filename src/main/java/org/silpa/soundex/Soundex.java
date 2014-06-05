@@ -5,6 +5,7 @@ import android.util.Log;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by sujith on 19/5/14.
@@ -58,11 +59,11 @@ public class Soundex {
         HashMap<Integer, List<String>> charmap = characterMap.getCharacterMap();
 
         try {
-            if (lang == LanguageConstants.ENGLISH_US) {
-                return charmap.get(LanguageConstants.SOUNDEX_EN).get(
+            if (lang == CharacterMap.ENGLISH_US) {
+                return charmap.get(CharacterMap.SOUNDEX_EN).get(
                         charmap.get(lang).indexOf(character));
             } else {
-                return charmap.get(LanguageConstants.SOUNDEX).get(
+                return charmap.get(CharacterMap.SOUNDEX).get(
                         charmap.get(lang).indexOf(character));
             }
         } catch (Exception e) {
@@ -86,7 +87,7 @@ public class Soundex {
         String sndx = "";
         String fc = "";
 
-        name = name.toLowerCase();
+        name = name.toLowerCase(Locale.getDefault());
 
         for (int i = 0; i < name.length(); i++) {
             String c = name.substring(i, i + 1);
