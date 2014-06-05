@@ -1,141 +1,77 @@
 package org.silpa.soundex;
 
-import android.util.Log;
-
-import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Created by sujith on 19/5/14.
  */
 public class Soundex {
 
-    /**
-     * Module name
-     */
-    public static final String MODULE_NAME = "Soundex";
+    private static Map<String, List<Character>> soundexMap = new HashMap<String, List<Character>>();
 
-    /**
-     * Brief information regarding module
-     */
-    public static final String MODULE_INFORMATION = "Soundex Algorithm for Indian Languages and " +
-            "'sounds like' search across Indian Languages";
-
-    // Android Log tag
-    private static final String LOG_TAG = "Soundex Module - Soundex";
-
-    /**
-     * CharacterMap object
-     */
-    private CharacterMap characterMap;
-
-    /**
-     * Constructor
-     */
-    public Soundex() {
-        this.characterMap = new CharacterMap();
+    static {
+        soundexMap.put("soundex_en", Arrays.asList('0', '1', '2', '3', '0', '1', '2', '0', '0', '2', '2', '4', '5', '5', '0', '1', '2', '6', '2', '3', '0', '1', '0', '2', '0', '2'));
+        soundexMap.put("soundex", Arrays.asList('0', '1', '2', '3', '0', '1', '2', '0', '0', '2', '2', '4', '5', '5', '0', '1', '2', '6', '2', '3', '0', '1', '0', '2', '0', '2'));
     }
 
-    /**
-     * Helper to get Soundex code of the argument passed.
-     *
-     * @param character single character unicode string
-     * @return soundex code of character
-     */
-    public String soundexCode(String character) {
-
-        if (character == null) throw new NullPointerException();
-
+    public char soundexCode(char ch) {
+        String lang = CharacterMap.getLanguage(ch);
         try {
-            character = new String((character.getBytes("UTF-8")), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            Log.e(LOG_TAG, "Encoding of given argument not supported. returned null");
-            return null;
-        }
-
-        int lang = characterMap.language(character);
-        HashMap<Integer, List<String>> charmap = characterMap.getCharacterMap();
-
-        try {
-            if (lang == CharacterMap.ENGLISH_US) {
-                return charmap.get(CharacterMap.SOUNDEX_EN).get(
-                        charmap.get(lang).indexOf(character));
+            if (lang.equals("en_US")) {
+                return Soundex.soundexMap.get("soundex_en").get(CharacterMap.charmap.get(lang).indexOf(ch));
             } else {
-                return charmap.get(CharacterMap.SOUNDEX).get(
-                        charmap.get(lang).indexOf(character));
+                return Soundex.soundexMap.get("soundex").get(CharacterMap.charmap.get(lang).indexOf(ch));
             }
         } catch (Exception e) {
-            return "0";
+            return '0';
         }
     }
 
-    /**
-     * This function returns Soundex Code of argument passed.
-     *
-     * @param name unicode string
-     * @return soundex code of input in string format
-     */
     public String soundex(String name) {
-        try {
-            name = new String((name.getBytes("UTF-8")), "UTF-8");
-        } catch (Exception e) {
-            return null;
-        }
-        int len = 8;
-        String sndx = "";
-        String fc = "";
-
-        name = name.toLowerCase(Locale.getDefault());
-
-        for (int i = 0; i < name.length(); i++) {
-            String c = name.substring(i, i + 1);
-            try {
-                c = new String((c.getBytes("UTF-8")), "UTF-8");
-            } catch (Exception e) {
-                return null;
-            }
-
-            if ((fc.equals(""))) {
-                fc = c;
-            }
-            String d = soundexCode(c);
-
-            if (d.equals("0"))
-                continue;
-
-            if ((sndx.equals(""))
-                    || !(d.equals(sndx.charAt(sndx.length() - 1) + ""))) {
-
-                sndx = sndx + d;
-            }
-        }
-
-        sndx = fc + sndx.substring(1, sndx.length());
-        return (sndx + "00000000").substring(0, len);
+        return soundex(name, 8);
     }
 
-    /**
-     * This functions compares two arguments passed.
-     *
-     * @param string1 argument1
-     * @param string2 argument2
-     * @return int
-     * 0 - if both arguments are same
-     * 1 - if both arguments sound similar and belong to same language
-     * 2 - if both arguments sound similar but belong to different language
-     * -1 - if arguments dont sound alike or on error
-     */
+    public String soundex(String name, int length) {
+
+        if (name == null || name.length() == 0) return null;
+
+        StringBuffer sndx = new StringBuffer("");
+        char fc = name.charAt(0);
+
+        for (char c : name.toLowerCase(Locale.getDefault()).toCharArray()) {
+            char d = soundexCode(c);
+
+            if (d == '0') {
+                continue;
+            }
+
+            if (sndx.length() == 0) {
+                sndx.append(d);
+            } else if (d != sndx.charAt(sndx.length() - 1)) {
+                sndx.append(d);
+            }
+        }
+        sndx.insert(0, fc);
+
+        if (CharacterMap.getLanguage(name.charAt(0)) == "en_US") {
+            return sndx.toString();
+        }
+
+        if (sndx.length() < length) {
+            while (sndx.length() != length) {
+                sndx.append('0');
+            }
+            return sndx.substring(0, length);
+        }
+        return sndx.substring(0, length);
+    }
+
     public int compare(String string1, String string2) {
-
-        if (string1 == null || string2 == null) throw new NullPointerException();
-
-        try {
-            string1 = new String((string1.getBytes("UTF-8")), "UTF-8");
-            string2 = new String((string2.getBytes("UTF-8")), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            Log.e(LOG_TAG, "Encoding of given argument not supported. returned -1");
+        if (string1 == null || string2 == null) {
             return -1;
         }
 
@@ -143,40 +79,20 @@ public class Soundex {
             return 0;
         }
 
+        String stringLang1 = CharacterMap.getLanguage(string1.charAt(0));
+        String stringLang2 = CharacterMap.getLanguage(string2.charAt(0));
+
+        if ((stringLang1.equals("en_US") && !stringLang2.equals("en_US")) ||
+                (!stringLang1.equals("en_US") && stringLang2.equals("en_US"))) {
+            return -1;
+        }
+
         String soundex1 = soundex(string1);
         String soundex2 = soundex(string2);
 
-        if (soundex1.equals(soundex2)) {
+        if (soundex1.substring(1).equals(soundex2.substring(1))) {
             return 1;
         }
-
-        if (soundexCode(string1.charAt(0) + "").equals(
-                soundexCode(string2.charAt(0) + ""))) {
-            if ((soundex1.substring(1, soundex1.length())).equals(soundex2
-                    .substring(1, soundex2.length()))) {
-                return 2;
-            }
-        }
-        return -1;
+        return 2;
     }
-
-    /**
-     * This function returns module name
-     *
-     * @return module name
-     */
-    public String getModuleName() {
-        return Soundex.MODULE_NAME;
-    }
-
-    /**
-     * This function returns module information
-     *
-     * @return information regarding this module
-     */
-    public String getModuleInformation() {
-        return Soundex.MODULE_INFORMATION;
-    }
-
-
 }
