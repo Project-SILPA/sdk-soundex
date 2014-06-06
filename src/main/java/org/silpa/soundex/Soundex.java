@@ -12,6 +12,7 @@ import java.util.Map;
 public class Soundex {
 
     private static Map<String, List<Character>> soundexMap = new HashMap<String, List<Character>>();
+
     static {
         soundexMap.put("soundex_en", Arrays.asList('0', '1', '2', '3', '0', '1', '2', '0', '0', '2', '2', '4', '5', '5', '0', '1', '2', '6', '2', '3', '0', '1', '0', '2', '0', '2'));
         soundexMap.put("soundex", Arrays.asList('0', 'N', '0', '0', 'A', 'A', 'B', 'B', 'C', 'C', 'P', 'Q', '0', 'D', 'D', 'D', 'E', 'E', 'E', 'E', 'F', 'F', 'F', 'F', 'G', 'H', 'H', 'H', 'H', 'G', 'I', 'I', 'I', 'I', 'J', 'K', 'K', 'K', 'K', 'L', 'L', 'M', 'M', 'M', 'M', 'N', 'O', 'P', 'P', 'Q', 'Q', 'Q', 'R', 'S', 'S', 'S', 'T', '0', '0', '0', '0', 'A', 'B', 'B', 'C', 'C', 'P', 'P', 'E', 'D', 'D', 'D', 'D', 'E', 'E', 'E', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'E', '0', '0', '0', '0', '0', '0', '0', '0', 'P', 'Q', 'Q', 'Q', '0', '0', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'J', 'J', 'Q', 'P', 'P', 'F'));
@@ -23,7 +24,7 @@ public class Soundex {
      *
      * @param ch Character whose soundex code is needed
      * @return Returns soundex code if character is found in charmap
-     *         else returns 0
+     * else returns 0
      */
     public char soundexCode(char ch) {
         String lang = CharacterMap.getLanguage(ch);
@@ -57,7 +58,7 @@ public class Soundex {
      * as well as English string.
      * Length default value 8
      *
-     * @param name String whose Soundex value to be calculated
+     * @param name   String whose Soundex value to be calculated
      * @param length Length of final Soundex string, if soundex
      *               caculated is more than this it will be
      *               truncated to length.
@@ -106,10 +107,10 @@ public class Soundex {
      * @param string1 First string for comparison
      * @param string2 Second string for comparison
      * @return Returns 0 if both strings are same, 1 if strings
-     *         sound phonetically same, 2 if strings are
-     *         phonetically not same. We can't perform English
-     *         cross language comparision if English string is
-     *         passed as one function will return -1.
+     * sound phonetically same, 2 if strings are
+     * phonetically not same. We can't perform English
+     * cross language comparision if English string is
+     * passed as one function will return -1.
      */
     public int compare(String string1, String string2) {
         if (string1 == null || string2 == null) {
