@@ -1,5 +1,7 @@
 package org.silpa.soundex;
 
+import org.silpa.sdk.common.CharacterMap;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
