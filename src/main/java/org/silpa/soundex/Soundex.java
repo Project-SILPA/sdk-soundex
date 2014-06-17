@@ -115,7 +115,8 @@ public class Soundex {
      * passed as one function will return -1.
      */
     public int compare(String string1, String string2) {
-        if (string1 == null || string2 == null) {
+        if (string1 == null || string2 == null ||
+                string1.length() == 0 || string2.length() == 0) {
             return -1;
         }
 
