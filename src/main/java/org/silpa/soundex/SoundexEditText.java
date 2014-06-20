@@ -157,22 +157,27 @@ public class SoundexEditText extends EditText implements SoundexInterface {
                         ((TextView) mSoundexCodeOutputView).setText(mSoundexCode);
                     }
                 }
-
-                // for comparing soundex values
-                if (mCompareWithView == null) {
-                    mCompareWithView = getRootView().findViewById(mCompareWithResourceId);
-                }
-                if (mCompareWithView != null) {
-                    if (mCompareWithView instanceof EditText) {
-                        mCompareValue = soundex.compare(getText().toString(),
-                                ((EditText) mCompareWithView).getText().toString());
-                    } else if (mCompareWithView instanceof TextView) {
-                        mCompareValue = soundex.compare(getText().toString(),
-                                ((TextView) mCompareWithView).getText().toString());
-                    }
-                }
             }
         });
+    }
+
+    /**
+     * Function to compare  Soundex values
+     */
+    private void soundexCompare() {
+        // for comparing soundex values
+        if (mCompareWithView == null) {
+            mCompareWithView = getRootView().findViewById(mCompareWithResourceId);
+        }
+        if (mCompareWithView != null) {
+            if (mCompareWithView instanceof EditText) {
+                mCompareValue = soundex.compare(getText().toString(),
+                        ((EditText) mCompareWithView).getText().toString());
+            } else if (mCompareWithView instanceof TextView) {
+                mCompareValue = soundex.compare(getText().toString(),
+                        ((TextView) mCompareWithView).getText().toString());
+            }
+        }
     }
 
     /**
@@ -213,6 +218,7 @@ public class SoundexEditText extends EditText implements SoundexInterface {
      */
     @Override
     public int getCompareValue() {
+        soundexCompare();
         return this.mCompareValue;
     }
 }
