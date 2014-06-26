@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.silpa.render.IndicTextView;
+
 /**
  * Created by sujith on 17/6/14.
  */
-public class SoundexTextView extends TextView implements SoundexInterface {
+public class SoundexTextView extends IndicTextView implements SoundexInterface {
 
     /**
      * Soundex object

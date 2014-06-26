@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.silpa.render.IndicEditText;
+
 /**
  * Created by sujith on 17/6/14.
  */
-public class SoundexEditText extends EditText implements SoundexInterface {
+public class SoundexEditText extends IndicEditText implements SoundexInterface {
 
     /**
      * Soundex object
