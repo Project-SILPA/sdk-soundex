@@ -41,7 +41,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':sdk-common')
-    compile project(':sdk-render')
 }
 
-//apply from: '../gradle-mvn-push.gradle'
+// Uncomment following code while updating on maven central
+//
+// apply from: '../gradle-mvn-push.gradle'
