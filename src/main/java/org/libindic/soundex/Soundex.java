@@ -1,6 +1,6 @@
-package org.silpa.soundex;
+package org.libindic.soundex;
 
-import org.silpa.sdk.common.CharacterMap;
+import org.libindic.common.CharacterMap;
 
 import java.util.Arrays;
 import java.util.HashMap;
